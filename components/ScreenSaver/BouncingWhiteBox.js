@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function BouncingWhiteBox() {
   const boxSize = 200;
-  const speed = 8;
+  const speed = 4;
   const fps = 60;
   const interval = 1000 / fps;
 
@@ -81,7 +81,7 @@ export default function BouncingWhiteBox() {
           height: `${boxSize}px`,
           left: `${position.x}px`,
           top: `${position.y}px`,
-          backgroundColor: getColor(),
+        //   backgroundColor: getColor(),
         }}
       />
     </div>
