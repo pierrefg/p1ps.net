@@ -31,9 +31,9 @@ export default function ScreenSaver() {
 
     if (!active) return null;
 
-  return (
-    <div className="absolute top-0 left-0 min-h-screen w-full bg-black flex items-center justify-center z-[1001]">
-        <BouncingWhiteBox />
-    </div>
-  );
+    return (
+        <div className="absolute top-0 left-0 min-h-screen w-full flex items-center justify-center z-[1001]">
+            <BouncingWhiteBox />
+        </div>
+    );
 }

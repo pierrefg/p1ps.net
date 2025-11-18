@@ -15,14 +15,10 @@ export default function BouncingWhiteBox() {
 
   const [direction, setDirection] = useState({ x: speed, y: speed });
 
-  const [phase, setPhase] = useState(0);
-  const [phaseDir, setPhaseDir] = useState(0.01);
-
   useEffect(() => {
     let timerId;
 
     const update = () => {
-      // Move the box
       setPosition((prev) => {
         let nextX = prev.x + direction.x;
         let nextY = prev.y + direction.y;
@@ -44,36 +40,61 @@ export default function BouncingWhiteBox() {
         return { x: nextX, y: nextY };
       });
 
-      // Update phase for color cycling
-      setPhase((prev) => {
-        let nextPhase = prev + phaseDir;
-        if (nextPhase >= 1) {
-          nextPhase = 1;
-          setPhaseDir(-phaseDir); // reverse direction
-        } else if (nextPhase <= 0) {
-          nextPhase = 0;
-          setPhaseDir(-phaseDir); // reverse direction
-        }
-        return nextPhase;
-      });
-
       timerId = setTimeout(update, interval);
     };
 
     timerId = setTimeout(update, interval);
 
     return () => clearTimeout(timerId);
-  }, [direction, interval, phaseDir]);
-
-  const getColor = () => {
-    const r = Math.round(128 * phase);
-    const g = 0;
-    const b = Math.round(128 * phase);
-    return `rgb(${r},${g},${b})`;
-  };
+  }, [direction, interval]);
 
   return (
     <div className="absolute top-0 left-0 min-h-screen w-full z-[1001]">
+      {/* Overlay filling everything except the box */}
+      <div className="fixed top-0 left-0 w-full h-full pointer-events-none">
+  {/* Top */}
+  <div
+    className="absolute bg-black"
+    style={{
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: position.y + "px",
+    }}
+  />
+  {/* Bottom */}
+  <div
+    className="absolute bg-black"
+    style={{
+      top: position.y + boxSize + "px",
+      left: 0,
+      width: "100%",
+      height: `calc(100% - ${position.y + boxSize}px)`,
+    }}
+  />
+  {/* Left */}
+  <div
+    className="absolute bg-black"
+    style={{
+      top: position.y + "px",
+      left: 0,
+      width: position.x + "px",
+      height: boxSize + "px",
+    }}
+  />
+  {/* Right */}
+  <div
+    className="absolute bg-black"
+    style={{
+      top: position.y + "px",
+      left: position.x + boxSize + "px",
+      width: `calc(100% - ${position.x + boxSize}px)`,
+      height: boxSize + "px",
+    }}
+  />
+</div>
+
+      {/* The moving box */}
       <div
         className="border-4 border-white absolute"
         style={{
@@ -81,7 +102,6 @@ export default function BouncingWhiteBox() {
           height: `${boxSize}px`,
           left: `${position.x}px`,
           top: `${position.y}px`,
-        //   backgroundColor: getColor(),
         }}
       />
     </div>
