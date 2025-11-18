@@ -1,9 +1,13 @@
-import Image from "next/image";
+import TaskBar from "@/components/TaskBar/TaskBar";
+import Background from "@/components/Background/Background";
+import ScreenSaver from "@/components/ScreenSaver/ScreenSaver";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      p1ps_is_alive;
+    <div className="relative min-h-screen w-full bg-black">
+      <ScreenSaver />
+      <Background />
+      <TaskBar />
     </div>
   );
 }

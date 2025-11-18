@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "p1ps_is_alive;",
+  title: "p1ps_is_alive",
   description: "p1ps_is_alive",
 };
 
