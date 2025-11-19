@@ -71,7 +71,7 @@ export default function Window({ children }) {
 
   return (
     <div
-      className="absolute border-white border-2 bg-black z-10 flex flex-col shadow-[0_4px_0_0_black]"
+      className="absolute border-white border-2 bg-black z-10 flex flex-col shadow-[6px_6px_0px_0_#00000040]"
       style={{
         width: `${size.width}px`,
         height: `${size.height}px`,
@@ -81,7 +81,7 @@ export default function Window({ children }) {
     >
       {/* Title bar */}
       <div
-        className="w-full h-[30px] border-b-2 border-white flex flex-row cursor-grab justify-center items-center bg-purple-950 select-none"
+        className="w-full h-[30px] border-b-2 border-white flex flex-row cursor-grab justify-center items-center bg-[#800080] select-none"
         onMouseDown={handleMouseDown}
       >
         <div className="flex flex-1 justify-center items-center">{title}</div>
