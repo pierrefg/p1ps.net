@@ -1,14 +1,12 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { nanoid } from 'nanoid';
 
 import useStore from '@/store/useStore';
 
-export default function Window({ App, file }) {
-  const [id] = useState(() => nanoid());
-
+export default function Window({ App, file, id }) {
   const { lastOpenningPosition, lastZValue } = useStore();
+  const closeWindow = useStore((state) => state.closeWindow);
 
   const [position, setPosition] = useState({ x: lastOpenningPosition.x, y: lastOpenningPosition.y });
   const [size, setSize] = useState({ width: 800, height: 600 });
@@ -17,8 +15,6 @@ export default function Window({ App, file }) {
   const [dragging, setDragging] = useState(false);
   const [resizing, setResizing] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
-
-  const [closed, setClosed] = useState(false);
 
   useEffect(() => {
     useStore.setState((state) => ({
@@ -110,7 +106,7 @@ export default function Window({ App, file }) {
           {App.icon}&nbsp;{App.appName} -&nbsp;<i>{file ? file : 'untitled.'+App.ext}</i>
         </div>
         <div className="flex justify-center items-center p-2">
-          <button onClick={x => setClosed(!closed)}>x</button>
+          <button onClick={() => closeWindow(id)}>x</button>
         </div>
       </div>
 

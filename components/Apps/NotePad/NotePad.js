@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-import Window from "@/components/Window/Window";
 import { PiNoteDuotone } from "react-icons/pi";
 
 function NotePad() {    
@@ -13,9 +12,7 @@ function NotePad() {
         setText(e.target.value);
     };
 
-
     return <>
-        {/* <Window icon={notepadIcon} appName={notepadName} fileName={fileName}> */}
         <textarea
             type="text"
             value={text}
@@ -26,7 +23,6 @@ function NotePad() {
             spellCheck={false}
             autoComplete="off"
         />
-        {/* </Window> */}
     </>;
 }
 

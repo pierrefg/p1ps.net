@@ -16,7 +16,7 @@ export default function Home() {
     <div className="relative min-h-screen w-full overflow-hidden">
       <ScreenSaver />
       <Background />
-      {openWindows.map((App) => App)}
+      {openWindows.map((App) => App.window)}
       <TaskBar />
     </div>
   );
