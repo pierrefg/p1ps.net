@@ -17,7 +17,7 @@ export default function TaskBar() {
               onClick={() => addWindow(App.app)}
               className="app-button"
             >
-              {App.icon}
+              {App.app.icon}
             </button>
           ))}
         </div>

@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 
 import useStore from '@/store/useStore';
 
-export default function Window({ children, icon, appName, fileName }) {
+export default function Window({ App, file }) {
   const [id] = useState(() => nanoid());
 
   const { lastOpenningPosition, lastZValue } = useStore();
@@ -107,7 +107,7 @@ export default function Window({ children, icon, appName, fileName }) {
         
       >
         <div className="flex flex-1 justify-center items-center cursor-grab" onMouseDown={handleMouseDown}>
-          {icon}&nbsp;{appName} -&nbsp;<i>{fileName}</i>
+          {App.icon}&nbsp;{App.appName} -&nbsp;<i>{file ? file : 'untitled.'+App.ext}</i>
         </div>
         <div className="flex justify-center items-center p-2">
           <button onClick={x => setClosed(!closed)}>x</button>
@@ -115,7 +115,7 @@ export default function Window({ children, icon, appName, fileName }) {
       </div>
 
       {/* Content */}
-      <div className="flex-1 relative">{children}</div>
+      <div className="flex-1 relative"><App /></div>
 
       {/* Resize handle */}
       <div
