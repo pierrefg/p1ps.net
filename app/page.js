@@ -6,7 +6,7 @@ import Window from "@/components/Window/Window";
 export default function Home() {
   return (
     <div className="relative min-h-screen w-full bg-black overflow-hidden">
-      {/* <ScreenSaver /> */}
+      <ScreenSaver />
       <Background />
       <Window />
       <TaskBar />
