@@ -50,51 +50,47 @@ export default function BouncingWhiteBox() {
 
   return (
     <div className="absolute top-0 left-0 min-h-screen w-full z-[1001]">
-      {/* Overlay filling everything except the box */}
+      
+      {/* MASKING */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none">
-  {/* Top */}
-  <div
-    className="absolute bg-black"
-    style={{
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: position.y + "px",
-    }}
-  />
-  {/* Bottom */}
-  <div
-    className="absolute bg-black"
-    style={{
-      top: position.y + boxSize + "px",
-      left: 0,
-      width: "100%",
-      height: `calc(100% - ${position.y + boxSize}px)`,
-    }}
-  />
-  {/* Left */}
-  <div
-    className="absolute bg-black"
-    style={{
-      top: position.y + "px",
-      left: 0,
-      width: position.x + "px",
-      height: boxSize + "px",
-    }}
-  />
-  {/* Right */}
-  <div
-    className="absolute bg-black"
-    style={{
-      top: position.y + "px",
-      left: position.x + boxSize + "px",
-      width: `calc(100% - ${position.x + boxSize}px)`,
-      height: boxSize + "px",
-    }}
-  />
-</div>
+        <div
+          className="absolute bg-black"
+          style={{
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: position.y + "px",
+          }}
+        />
+        <div
+          className="absolute bg-black"
+          style={{
+            top: position.y + boxSize + "px",
+            left: 0,
+            width: "100%",
+            height: `calc(100% - ${position.y + boxSize}px)`,
+          }}
+        />
+        <div
+          className="absolute bg-black"
+          style={{
+            top: position.y + "px",
+            left: 0,
+            width: position.x + "px",
+            height: boxSize + "px",
+          }}
+        />
+        <div
+          className="absolute bg-black"
+          style={{
+            top: position.y + "px",
+            left: position.x + boxSize + "px",
+            width: `calc(100% - ${position.x + boxSize}px)`,
+            height: boxSize + "px",
+          }}
+        />
+      </div>
 
-      {/* The moving box */}
       <div
         className="border-4 border-white absolute"
         style={{

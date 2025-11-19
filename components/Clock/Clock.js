@@ -1,20 +1,28 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import moment from "moment";
 
 export default function Clock() {
-  const [time, setTime] = useState(moment().format("L LTS"));
+  const [date, setDate] = useState("");
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(moment().format("L LTS"));
-    }, 1000);
+    const update = () => {
+      setDate(
+        new Date().toLocaleString("en-GB", {
+          year: "2-digit",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+        }).replace(",", "")
+      );
+    };
+
+    update(); // initial render
+    const interval = setInterval(update, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <>{time}</>
-  );
+  return <>{date}</>;
 }
