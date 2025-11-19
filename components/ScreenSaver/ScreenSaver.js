@@ -20,11 +20,15 @@ export default function ScreenSaver() {
         resetTimer();
 
         window.addEventListener("mousemove", resetTimer);
+        window.addEventListener("touchmove", resetTimer);
         window.addEventListener("keydown", resetTimer);
+        window.addEventListener("touchdown", resetTimer);
 
         return () => {
             window.removeEventListener("mousemove", resetTimer);
+            window.removeEventListener("touchmove", resetTimer);
             window.removeEventListener("keydown", resetTimer);
+            window.removeEventListener("touchdown", resetTimer);
             clearTimeout(timer);
         };
     }, []);
