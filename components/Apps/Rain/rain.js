@@ -240,5 +240,5 @@ export default function Rain({ parentRef }) {
 }
 
 Rain.appName = "Plic ploc";
-Rain.ext = "";
+Rain.ext = "rain";
 Rain.icon = <MdOutlineGrain />;
