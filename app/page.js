@@ -1,14 +1,19 @@
+"use client";
+
 import TaskBar from "@/components/TaskBar/TaskBar";
 import Background from "@/components/Background/Background";
 import ScreenSaver from "@/components/ScreenSaver/ScreenSaver";
-import NotePad from "./apps/NotePad/NotePad";
+
+import useStore from '@/store/useStore';
 
 export default function Home() {
+  const { openWindows } = useStore();
+
   return (
-    <div className="relative min-h-screen w-full bg-black overflow-hidden">
+    <div className="relative min-h-screen w-full overflow-hidden">
       <ScreenSaver />
       <Background />
-      <NotePad />
+      {openWindows.map((App) => App)}
       <TaskBar />
     </div>
   );

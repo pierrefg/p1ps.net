@@ -1,16 +1,35 @@
 'use client';
 
 import { useEffect, useState } from "react";
+import { nanoid } from 'nanoid';
 
-export default function Window({ children, appName, fileName }) {
-  const [position, setPosition] = useState({ x: 50, y: 50 });
+import useStore from '@/store/useStore';
+
+export default function Window({ children, icon, appName, fileName }) {
+  const [id] = useState(() => nanoid());
+
+  const { lastOpenningPosition, lastZValue } = useStore();
+
+  const [position, setPosition] = useState({ x: lastOpenningPosition.x, y: lastOpenningPosition.y });
   const [size, setSize] = useState({ width: 800, height: 600 });
+  const [zOrder, setZOrder] = useState(lastZValue);
 
   const [dragging, setDragging] = useState(false);
   const [resizing, setResizing] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
   const [closed, setClosed] = useState(false);
+
+  useEffect(() => {
+    useStore.setState((state) => ({
+      lastOpenningPosition: { x: lastOpenningPosition.x+20, y: lastOpenningPosition.y+20 },
+      lastZValue: lastZValue+1
+    }));
+  }, []);
+
+  const activateWindow = (e) => {
+
+  };
 
   // --- Dragging logic ---
   const handleMouseDown = (e) => {
@@ -70,24 +89,26 @@ export default function Window({ children, appName, fileName }) {
     setResizing(true);
   };
 
-  if(closed) return null;
-
   return (
     <div
-      className="absolute border-white border-2 bg-black z-10 flex flex-col shadow-[6px_6px_0px_0_#00000040]"
+      className="window absolute flex flex-col"
       style={{
         width: `${size.width}px`,
         height: `${size.height}px`,
         left: `${position.x}px`,
         top: `${position.y}px`,
+        zIndex: zOrder,
       }}
+      onClick={activateWindow}
     >
       {/* Title bar */}
       <div
         className="w-full h-[30px] border-b-2 border-white flex flex-row justify-center items-center bg-[#800080] select-none"
         
       >
-        <div className="flex flex-1 justify-center items-center cursor-grab" onMouseDown={handleMouseDown}>{appName} -&nbsp;<i>{fileName}</i></div>
+        <div className="flex flex-1 justify-center items-center cursor-grab" onMouseDown={handleMouseDown}>
+          {icon}&nbsp;{appName} -&nbsp;<i>{fileName}</i>
+        </div>
         <div className="flex justify-center items-center p-2">
           <button onClick={x => setClosed(!closed)}>x</button>
         </div>
@@ -101,6 +122,11 @@ export default function Window({ children, appName, fileName }) {
         className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize bg-white"
         onMouseDown={startResize}
       />
+
+      {/* Id */}
+      <div
+        className="absolute bottom-0 left-0 small pl-2 text-gray-700"
+      >{id}</div>
     </div>
   );
 }

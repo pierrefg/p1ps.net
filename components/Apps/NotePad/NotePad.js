@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 
 import Window from "@/components/Window/Window";
+import { PiNoteDuotone } from "react-icons/pi";
 
-export default function NotePad() {
-    const appName = 'Bloc-notes'
-    
+export const notepadIcon = <PiNoteDuotone />;
+export const notepadName = "Bloc-notes";
+
+export default function NotePad() {    
     const [fileName, setFileName] = useState("untitled.txt*");
     const [text, setText] = useState("Pas grand chose à dire pour le moment.\nJ'ai pris des vacances trop longues.");
 
@@ -16,7 +18,7 @@ export default function NotePad() {
 
 
     return <>
-        <Window appName={appName} fileName={fileName}>
+        <Window icon={notepadIcon} appName={notepadName} fileName={fileName}>
             <textarea
                 type="text"
                 value={text}

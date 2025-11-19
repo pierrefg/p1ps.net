@@ -27,3 +27,12 @@ button {
 button:hover {
   color: blue;
 }
+
+.app-button {
+  font-size: 35px;
+}
+
+.window {
+  @apply border-2 border-white bg-black;
+  box-shadow: 6px 6px 0 0 #00000040;
+}
