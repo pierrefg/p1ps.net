@@ -33,6 +33,6 @@ button:hover {
 }
 
 .window {
-  @apply border-2 border-white bg-black;
+  @apply border-2 border-gray-200 bg-black;
   box-shadow: 6px 6px 0 0 #00000040;
 }

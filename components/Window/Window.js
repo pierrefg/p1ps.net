@@ -6,26 +6,23 @@ import useStore from '@/store/useStore';
 
 export default function Window({ App, file, id }) {
   const { lastOpenningPosition, lastZValue } = useStore();
+  const activeWindowId = useStore((state) => state.activeWindowId);
   const closeWindow = useStore((state) => state.closeWindow);
+  const activateWindow = useStore((state) => state.activateWindow);
 
   const [position, setPosition] = useState({ x: lastOpenningPosition.x, y: lastOpenningPosition.y });
   const [size, setSize] = useState({ width: 800, height: 600 });
   const [zOrder, setZOrder] = useState(lastZValue);
 
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    setActive(activeWindowId === id);
+  }, [activeWindowId]);
+
   const [dragging, setDragging] = useState(false);
   const [resizing, setResizing] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    useStore.setState((state) => ({
-      lastOpenningPosition: { x: lastOpenningPosition.x+20, y: lastOpenningPosition.y+20 },
-      lastZValue: lastZValue+1
-    }));
-  }, []);
-
-  const activateWindow = (e) => {
-
-  };
 
   // --- Dragging logic ---
   const handleMouseDown = (e) => {
@@ -87,16 +84,28 @@ export default function Window({ App, file, id }) {
 
   return (
     <div
-      className="window absolute flex flex-col"
+      className={`window absolute flex flex-col ${active ? "select-none" : ""}`}
       style={{
         width: `${size.width}px`,
         height: `${size.height}px`,
         left: `${position.x}px`,
         top: `${position.y}px`,
         zIndex: zOrder,
+        // opacity: active ? 1 : 0.8,
       }}
-      onClick={activateWindow}
+      onMouseDown={() => activateWindow(id)}
     >
+      {
+        !active && (
+        <div
+          className="absolute top-0 left-0 w-full h-full"
+          style={{
+            backgroundColor: "rgba(0,0,0,0.4)",
+            pointerEvents: "none",
+            zIndex: zOrder,
+          }}
+        />)
+      } 
       {/* Title bar */}
       <div
         className="w-full h-[30px] border-b-2 border-white flex flex-row justify-center items-center bg-[#800080] select-none"
