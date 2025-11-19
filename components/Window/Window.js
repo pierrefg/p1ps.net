@@ -3,6 +3,8 @@
 import useDragResize from "./useDragResize";
 import useStore from '@/store/useStore';
 
+import { useRef } from "react";
+
 export default function Window({ App, file, id }) {
   const { lastOpenningPosition } = useStore();
   const windowsOrder = useStore((s) => s.windowsOrder);
@@ -17,6 +19,9 @@ export default function Window({ App, file, id }) {
 
   const active = activeWindowId === id;
   const zOrder = windowsOrder.indexOf(id);
+
+  const contentRef = useRef();
+  
 
   return (
     <div
@@ -54,8 +59,8 @@ export default function Window({ App, file, id }) {
         <button onClick={() => closeWindow(id)} className="p-2">x</button>
       </div>
 
-      <div className="flex-1 relative">
-        <App />
+      <div className="flex-1 relative" ref={contentRef}>
+        <App parentRef={contentRef} />
       </div>
 
       <div

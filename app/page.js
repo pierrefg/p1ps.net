@@ -6,10 +6,10 @@ import TaskBar from "@/components/TaskBar/TaskBar";
 import Background from "@/components/Background/Background";
 import ScreenSaver from "@/components/ScreenSaver/ScreenSaver";
 
-import Window from "@/components/Window/Window";
-
 import useStore from '@/store/useStore';
+
 import NotePad from "@/components/Apps/NotePad/NotePad";
+import Rain from "@/components/Apps/Rain/rain";
 
 export default function Home() {
   const { openWindows } = useStore();
@@ -17,6 +17,7 @@ export default function Home() {
 
   useEffect(() => {
       addWindow(NotePad);
+      addWindow(Rain);
   }, []);
 
   return (
