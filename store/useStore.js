@@ -5,8 +5,9 @@ import NotePad from '@/components/Apps/NotePad/NotePad';
 import { nanoid } from 'nanoid';
 
 const useStore = create((set) => ({
-  openWindows : [ ],
+  openWindows : [],
   activeWindowId : null,
+  windowsOrder: [],
   lastOpenningPosition : { x: 50, y: 50 },
   lastZValue: 1,
 
@@ -24,6 +25,7 @@ const useStore = create((set) => ({
         x: state.lastOpenningPosition.x + 25,
         y: state.lastOpenningPosition.y + 25
       },
+      windowsOrder: [...state.windowsOrder, id],
       lastZValue: state.lastZValue + 1,
       activeWindowId: id
     };
@@ -32,10 +34,21 @@ const useStore = create((set) => ({
     set((state) => ({
       openWindows: state.openWindows.filter(item => item.id !== windowId)
   })),
-  activateWindow: (windowId) =>
-    set((state) => ({
-      activeWindowId: windowId
-  })),
+  activateWindow: (windowId) => set((state) => {
+    const index = state.windowsOrder.indexOf(windowId);
+
+    const newWindowsOrder = [...state.windowsOrder];
+
+    if (index > -1) {
+      const [item] = newWindowsOrder.splice(index, 1);
+      newWindowsOrder.push(item);
+    }
+
+    return {
+      windowsOrder: newWindowsOrder,
+      activeWindowId: windowId,
+    };
+  }),
 }));
 
 export default useStore;

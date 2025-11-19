@@ -6,15 +6,20 @@ import useStore from '@/store/useStore';
 
 export default function Window({ App, file, id }) {
   const { lastOpenningPosition, lastZValue } = useStore();
+  const windowsOrder = useStore((state) => state.windowsOrder);
   const activeWindowId = useStore((state) => state.activeWindowId);
   const closeWindow = useStore((state) => state.closeWindow);
   const activateWindow = useStore((state) => state.activateWindow);
 
   const [position, setPosition] = useState({ x: lastOpenningPosition.x, y: lastOpenningPosition.y });
   const [size, setSize] = useState({ width: 800, height: 600 });
-  const [zOrder, setZOrder] = useState(lastZValue);
+  const [zOrder, setZOrder] = useState(0);
 
   const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    setZOrder(windowsOrder.indexOf(id));
+  }, [windowsOrder]);
 
   useEffect(() => {
     setActive(activeWindowId === id);
