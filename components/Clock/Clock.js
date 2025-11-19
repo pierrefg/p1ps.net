@@ -16,12 +16,12 @@ export default function Clock() {
           minute: "2-digit",
         }).replace(",", "")
       );
-    };
+  };
 
-    update(); // initial render
-    const interval = setInterval(update, 1000);
+  update(); // initial render
+  const interval = setInterval(update, 1000);
 
-    return () => clearInterval(interval);
+  return () => clearInterval(interval);
   }, []);
 
   return <>{date}</>;

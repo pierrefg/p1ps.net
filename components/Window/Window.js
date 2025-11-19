@@ -2,14 +2,15 @@
 
 import { useEffect, useState } from "react";
 
-export default function Window({ children }) {
+export default function Window({ children, appName, fileName }) {
   const [position, setPosition] = useState({ x: 50, y: 50 });
   const [size, setSize] = useState({ width: 800, height: 600 });
-  const [title, setTitle] = useState("Hello Window");
 
   const [dragging, setDragging] = useState(false);
   const [resizing, setResizing] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+  const [closed, setClosed] = useState(false);
 
   // --- Dragging logic ---
   const handleMouseDown = (e) => {
@@ -69,6 +70,8 @@ export default function Window({ children }) {
     setResizing(true);
   };
 
+  if(closed) return null;
+
   return (
     <div
       className="absolute border-white border-2 bg-black z-10 flex flex-col shadow-[6px_6px_0px_0_#00000040]"
@@ -81,11 +84,13 @@ export default function Window({ children }) {
     >
       {/* Title bar */}
       <div
-        className="w-full h-[30px] border-b-2 border-white flex flex-row cursor-grab justify-center items-center bg-[#800080] select-none"
-        onMouseDown={handleMouseDown}
+        className="w-full h-[30px] border-b-2 border-white flex flex-row justify-center items-center bg-[#800080] select-none"
+        
       >
-        <div className="flex flex-1 justify-center items-center">{title}</div>
-        <div className="flex justify-center items-center p-2">controls</div>
+        <div className="flex flex-1 justify-center items-center cursor-grab" onMouseDown={handleMouseDown}>{appName} -&nbsp;<i>{fileName}</i></div>
+        <div className="flex justify-center items-center p-2">
+          <button onClick={x => setClosed(!closed)}>x</button>
+        </div>
       </div>
 
       {/* Content */}

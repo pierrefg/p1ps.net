@@ -18,8 +18,12 @@ body {
   font-variation-settings: "wght" 400;
 }
 
+button {
+  @apply cursor-pointer;
+  padding-left: 3px;
+  padding-right: 3px;
+}
 
-
-h1 {
-  font-size: 30px;
+button:hover {
+  color: blue;
 }
