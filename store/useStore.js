@@ -6,7 +6,7 @@ const useStore = create((set, get) => ({
   openWindows: [],
   activeWindowId: null,
   windowsOrder: [],
-  lastOpenningPosition: { x: 50, y: 50 },
+  lastOpenningPosition: { x: 150, y: 50 },
   lastZValue: 100,
 
   addWindow: (App, file = null) => set((state) => {

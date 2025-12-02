@@ -7,7 +7,7 @@ const files = [
         name: "note_01",
         ext: "txt",
         app: NotePad,
-        content: "J'ai finalemnt un RDV la semnaine pro, un peu stressé.\nComment lui dire ?",
+        content: "RDV semaine prochaine, un peu angoissé.\nComment en parler.",
         created_on: new Date("2025-08-20 10:02"),
         modified_on: new Date("2025-08-21 08:01"),
         size: '10ko',
