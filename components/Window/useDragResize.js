@@ -53,8 +53,8 @@ export default function useDragResize(initialPos, initialSize) {
 
       if (resizing) {
         setSize({
-          width: Math.max(200, x - position.x),
-          height: Math.max(100, y - position.y),
+          width: Math.max(500, x - position.x),
+          height: Math.max(300, y - position.y),
         });
       }
     },

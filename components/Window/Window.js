@@ -31,7 +31,7 @@ export default function Window({ App, file, id }) {
         top: position.y,
         width: size.width,
         height: size.height,
-        zIndex: zOrder,
+        zIndex: zOrder+100,
       }}
       onMouseDown={() => activateWindow(id)}
       onTouchStart={() => activateWindow(id)}
@@ -53,14 +53,17 @@ export default function Window({ App, file, id }) {
           onMouseDown={startDragging}
           onTouchStart={startDragging}
         >
-          {App.icon} {App.appName} -&nbsp;<i>{file ?? ("untitled." + App.ext)}</i>
+          {file ? (file.name + '.' + App.ext) : <i>{"untitled." + App.ext}</i>}&nbsp;-&nbsp;{<App.icon />}&nbsp;{App.appName} 
         </div>
 
-        <button onClick={() => closeWindow(id)} className="p-2">x</button>
+        <button onClick={() => closeWindow(id)} className="p-2 m-2">x</button>
       </div>
 
       <div className="flex-1 relative" ref={contentRef}>
-        <App parentRef={contentRef} />
+        <App
+          parentRef={contentRef}
+          {...(file ? { content: file.content } : {})}
+        />
       </div>
 
       <div

@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 
 import { PiNoteDuotone } from "react-icons/pi";
+import { GoPencil } from "react-icons/go";
 
-function NotePad() {    
-    const [fileName, setFileName] = useState("untitled.txt*");
-    const [text, setText] = useState("Pas grand chose à dire pour le moment.\nJ'ai pris des vacances trop longues.");
+function NotePad({ content = "Pas grand chose à dire pour le moment.\nJ'ai pris des vacances trop longues." }) {
+    const [text, setText] = useState(content);
 
     const handleChange = (e) => {
         setText(e.target.value);
@@ -28,6 +28,6 @@ function NotePad() {
 
 NotePad.appName = "Bloc-notes";
 NotePad.ext = "txt";
-NotePad.icon = <PiNoteDuotone />;
+NotePad.icon = GoPencil;
 
 export default NotePad;

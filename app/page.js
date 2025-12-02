@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from "react";
 
+import useStore from '@/store/useStore';
+
 import TaskBar from "@/components/TaskBar/TaskBar";
 import Background from "@/components/Background/Background";
 import ScreenSaver from "@/components/ScreenSaver/ScreenSaver";
-
-import useStore from '@/store/useStore';
-
 import NotePad from "@/components/Apps/NotePad/NotePad";
-import Rain from "@/components/Apps/Rain/rain";
+import Desktop from "@/components/Desktop/Desktop";
+
+import files from "@/files/files";
+
 
 export default function Home() {
   const { openWindows } = useStore();
@@ -17,11 +19,13 @@ export default function Home() {
 
   useEffect(() => {
       addWindow(NotePad);
+      // addWindow(NotePad, files[0]);
   }, []);
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       <ScreenSaver />
+      <Desktop files={files}/>
       <Background />
       {openWindows.map((App) => App.window)}
       <TaskBar />

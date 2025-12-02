@@ -80,7 +80,7 @@ export default function Background() {
   ];
 
   return (
-    <div className="absolute top-0 left-0 min-h-screen w-full bg-black flex items-center justify-center z-0 select-none relative">
+    <div className="absolute top-0 left-0 min-h-screen w-full bg-black flex items-center justify-center z-0 select-none">
       
       {!showGrid && (
         <div className="relative">
