@@ -28,7 +28,9 @@ export default function DesktopIcon({ file, addWindow }) {
         className="w-[80px] h-[100px] flex flex-col items-center justify-center text-center pointer-events-auto"
       >
         <file.app.icon className="text-[40px]" />
-        <span className="mt-1">{file.name+'.'+file.ext}</span>
+        <span className="mt-1 w-[120px] text-center break-words">
+          {file.name + '.' + file.ext}
+        </span>
       </button>
 
       {showTooltip && (

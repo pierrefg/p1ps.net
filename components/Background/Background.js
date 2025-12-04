@@ -39,13 +39,9 @@ export function SquareGrid({ targetPattern }) {
   return (
     <div className="w-[150px] h-[150px] border-2 border-white">
       {won ? (
-          // <div className="flex w-full h-full items-center justify-center">
-          //   <p>Tu as gagné.</p>
-          // </div>
           <Image
             src={prizeImg}
             alt="handsome man with a bowl on his head"
-            // width={}
             className="w-full h-full"
           />
       ) : (
