@@ -50,12 +50,16 @@ export default function Window({ App, file, id }) {
       <div className="w-full h-[30px] bg-[#800080] border-b-2 border-white flex items-center select-none">
         <div
           className="flex-1 cursor-grab flex items-center justify-center"
-          onMouseDown={startDragging}
-          onTouchStart={startDragging}
+          onMouseDown={(e) => startDragging(e)}
+          onTouchStart={(e) => startDragging(e)}
         >
-          {file ? (file.name + '.' + App.ext) : <i>{"untitled." + App.ext}</i>}&nbsp;-&nbsp;{<App.icon />}&nbsp;{App.appName} 
+          {App.uses_files && (
+            <span>
+              {file?.name ? `${file.name}.${App.ext}` : `untitled.${App.ext}`}&nbsp;-&nbsp;
+            </span>
+          )}
+          {App.icon && <App.icon />}&nbsp;{App.appName}
         </div>
-
         <button onClick={() => closeWindow(id)} className="p-2 m-2">x</button>
       </div>
 

@@ -23,5 +23,6 @@ function PicViewer({ content = null }) {
 PicViewer.appName = "Visionneuse";
 PicViewer.ext = "img";
 PicViewer.icon = AiOutlinePicture;
+PicViewer.uses_files = true;
 
 export default PicViewer;

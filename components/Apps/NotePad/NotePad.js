@@ -29,5 +29,6 @@ function NotePad({ content = "Pas grand chose à dire pour le moment.\nJ'ai pris
 NotePad.appName = "Bloc-notes";
 NotePad.ext = "txt";
 NotePad.icon = GoPencil;
+NotePad.uses_files = true;
 
 export default NotePad;

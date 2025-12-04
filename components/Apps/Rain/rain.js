@@ -16,7 +16,7 @@ function updateValue(source, target, dampening) {
   return source + (target - source) * dampening;
 }
 
-export default function Rain({ parentRef }) {
+function Rain({ parentRef }) {
   const [canvasSize, setCanvasSize] = useState(null);
   const [debug, setDebug] = useState(false);
 
@@ -242,3 +242,6 @@ export default function Rain({ parentRef }) {
 Rain.appName = "Plic ploc";
 Rain.ext = "rain";
 Rain.icon = MdOutlineGrain;
+Rain.uses_files = false;
+
+export default Rain;
