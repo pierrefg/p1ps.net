@@ -12,6 +12,8 @@ import Desktop from "@/components/Desktop/Desktop";
 
 import files from "@/files/files";
 
+import { MdComputer } from "react-icons/md";
+
 
 export default function Home() {
   const { openWindows } = useStore();
@@ -25,8 +27,9 @@ export default function Home() {
     <div className="relative min-h-screen w-full overflow-hidden">
 
       {/* MOBILE VIEW ONLY */}
-      <div className="w-full min-h-screen p-8 flex items-center justify-center text-center md:hidden">
-        <p>Mon blog n'est pas disponible sur le téléphone, allez le voir sur votre ordinateur !</p>
+      <div className="w-full min-h-screen p-8 flex flex-col items-center justify-center text-center md:hidden">
+        <MdComputer className="text-2xl mb-2"/>
+        <p>Mon super blog n'est hélas pas disponible téléphone, ouvrez donc votre ordinateur !</p>
       </div>
 
       {/* DESKTOP VIEW ONLY */}
