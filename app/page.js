@@ -27,9 +27,17 @@ export default function Home() {
     <div className="relative min-h-screen w-full overflow-hidden">
 
       {/* MOBILE VIEW ONLY */}
-      <div className="w-full min-h-screen p-8 flex flex-col items-center justify-center text-center md:hidden">
-        <MdComputer className="text-2xl mb-2"/>
-        <p>Mon super blog n'est hélas pas disponible téléphone, ouvrez donc votre ordinateur !</p>
+      <div className="w-full min-h-screen p-8 flex flex-col gap-2 items-center justify-center text-center md:hidden">
+        <MdComputer className="text-2xl"/>
+        <p>Mon super blog n'est hélas pas disponible sur téléphone... En attendant, vous pouvez visiter mon site principal :</p>
+        <a 
+          href="https://pierrefg.com" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="app-link"
+        >
+          pierrefg.com
+        </a>
       </div>
 
       {/* DESKTOP VIEW ONLY */}

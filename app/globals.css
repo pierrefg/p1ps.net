@@ -37,3 +37,11 @@ button:hover {
   @apply border-2 border-gray-200 bg-black;
   box-shadow: 6px 6px 0 0 #00000040;
 }
+
+.app-link {
+  @apply border-2 p-1;
+}
+
+.app-link:active {
+  color: blue;
+}
