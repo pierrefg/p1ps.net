@@ -1,9 +1,15 @@
 import "./globals.css";
 
-export const metadata = {
-  title: "p1ps_is_alive",
-  description: "p1ps_is_alive",
-};
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
+import { createPageMetadata } from "@/utils/metadata";
+
+export const metadata = createPageMetadata(
+    "p1ps.net",
+    "P1ps fait des trucs avec son ordi.",
+    ""
+)
 
 export default function RootLayout({ children }) {
   return (
@@ -17,6 +23,8 @@ export default function RootLayout({ children }) {
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body>
+        <Analytics />
+        <SpeedInsights />
         {children}
       </body>
     </html>

@@ -14,7 +14,6 @@ import files from "@/files/files";
 
 import { MdComputer } from "react-icons/md";
 
-
 export default function Home() {
   const { openWindows } = useStore();
   const addWindow = useStore((state) => state.addWindow);
