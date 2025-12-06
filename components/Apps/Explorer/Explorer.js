@@ -2,9 +2,11 @@
 
 import useStore from '@/store/useStore';
 
-import DesktopIcon from './DesktopIcon';
+import FileIcon from './FileIcon';
 
-export default function Desktop({ files }) {
+import { TiFolderOpen } from "react-icons/ti";
+
+function Explorer({ content = [] }) {
   const addWindow = useStore((state) => state.addWindow);
 
   return (
@@ -21,9 +23,16 @@ export default function Desktop({ files }) {
             gridTemplateRows: "repeat(auto-fill, 100px)"
         }}
     >
-        {files.map((file) => (
-            <DesktopIcon key={file.id} file={file} addWindow={addWindow} />
+        {content.map((file) => (
+            <FileIcon key={file.id} file={file} addWindow={addWindow} />
         ))}
     </div>
   );
 }
+
+Explorer.appName = "Explorateur";
+Explorer.ext = "";
+Explorer.icon = TiFolderOpen;
+Explorer.uses_files = true;
+
+export default Explorer;

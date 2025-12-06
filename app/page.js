@@ -8,7 +8,7 @@ import TaskBar from "@/components/TaskBar/TaskBar";
 import Background from "@/components/Background/Background";
 import ScreenSaver from "@/components/ScreenSaver/ScreenSaver";
 import NotePad from "@/components/Apps/NotePad/NotePad";
-import Desktop from "@/components/Desktop/Desktop";
+import Explorer from "@/components/Apps/Explorer/Explorer";
 
 import files from "@/files/files";
 
@@ -43,7 +43,7 @@ export default function Home() {
       {/* DESKTOP VIEW ONLY */}
       <div className="w-full h-full hidden md:block">
         <ScreenSaver />
-        <Desktop files={files} />
+        <Explorer content ={files} />
         <Background />
         {openWindows.map((App) => App.window)}
         <TaskBar />

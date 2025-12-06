@@ -1,7 +1,5 @@
 'use client';
 
-import Image from "next/image";
-
 import { BiPlanet } from "react-icons/bi";
 
 function Browser({ content = "https://fr.wikipedia.org/wiki/Salix_matsudana" }) {

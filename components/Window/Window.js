@@ -55,7 +55,7 @@ export default function Window({ App, file, id }) {
         >
           {App.uses_files && (
             <span>
-              {file?.name ? `${file.name}.${App.ext}` : `untitled.${App.ext}`}&nbsp;-&nbsp;
+              {file?.name ? <>{file.name}{file.ext && <>.{file.ext}</>}</> : <i>untitled.{App.ext}</i>}&nbsp;-&nbsp;
             </span>
           )}
           {App.icon && <App.icon />}&nbsp;{App.appName}
@@ -76,7 +76,7 @@ export default function Window({ App, file, id }) {
         onTouchStart={startResize}
       />
 
-      <div className="absolute bottom-0 left-0 text-gray-600 text-xs pl-2">{id}</div>
+      {/* <div className="absolute bottom-0 left-0 text-gray-600 text-xs pl-2">{id}</div> */}
     </div>
   );
 }
