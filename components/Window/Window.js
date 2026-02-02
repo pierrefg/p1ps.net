@@ -55,7 +55,7 @@ export default function Window({ App, file, id }) {
         >
           {App.uses_files && (
             <span>
-              {file?.name ? <>{file.name}{file.ext && <>.{file.ext}</>}</> : <i>untitled.{App.ext}</i>}&nbsp;-&nbsp;
+              {file?.name ? <>{file.name}{file.ext && <>.{file.ext}</>}</> : <span className="slant-md">untitled.{App.ext}</span>}&nbsp;-&nbsp;
             </span>
           )}
           {App.icon && <App.icon />}&nbsp;{App.appName}

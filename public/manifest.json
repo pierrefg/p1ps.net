@@ -1,7 +1,7 @@
 {
     "name": "p1ps",
     "short_name": "p1ps",
-    "description": "p1ps_is_alive",
+    "description": "p1ps fait des trucs avec son ordi.",
     "icons": [
       {
         "src": "/icons/icon-192x192.png",
